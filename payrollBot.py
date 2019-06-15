@@ -40,6 +40,13 @@ element_for_endlunch="EndLunch"
 ###########################################################
 
 
+time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
+while int(time.time()) < time_set:
+  time_difference = time_set - int(time.time())
+  minutes_difference = math.floor(time_difference / 60)
+  seconds_difference = time_difference - math.floor(time_difference / 60) * 60
+  print('not time yet: ', minutes_difference, 'mins', seconds_difference, 'secs left')
+  time.sleep(5)
 
 browser = webdriver.Safari()	#for macOS users[for others use chrome vis chromedriver]
 browser.get((website_link))
@@ -61,20 +68,13 @@ try:
 	print('logging in...')
 	time.sleep(3)
 
-	time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
-	while int(time.time()) < time_set:
-		time_difference = time_set - int(time.time())
-		minutes_difference = math.floor(time_difference / 60)
-		seconds_difference = time_difference - math.floor(time_difference / 60) * 60
-		print('not time yet: ', minutes_difference, 'mins', seconds_difference, 'secs left')
-		time.sleep(5)
   
-  #### uncomment the pair of lines for the next action (i.e. right now it's set to click on the start lunch button)
+  #### uncomment the pair of lines for the next action
 	# clockInButton = browser.find_element_by_name(element_for_clockin)
 	# clockInButton.click()
-	startLunchButton = browser.find_element_by_name(element_for_startlunch)
-	startLunchButton.click()
-  # endLunchButton = browser.find_element_by_name(element_for_endlunch)
+	# startLunchButton = browser.find_element_by_name(element_for_startlunch)
+	# startLunchButton.click()
+	# endLunchButton = browser.find_element_by_name(element_for_endlunch)
 	# endLunchButton.click()
   # clockOutButton = browser.find_element_by_name(element_for_clockout)
 	# clockOutButton.click()
