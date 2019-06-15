@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import math
 import os
 import config
 
@@ -60,17 +61,19 @@ try:
 	print('logging in...')
 	time.sleep(3)
 
-  # change unix epoch time to time you want to trigger button click
-  # https://www.epochconverter.com/
-	while int(time.time()) < UPDATE_THIS_TO_EPOCH_NUMBER:
-		print('not time yet!')
+	time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # unix epoch time to time you want to trigger the action: https://www.epochconverter.com/
+	while int(time.time()) < time_set:
+		time_difference = time_set - int(time.time())
+		minutes_difference = math.floor(time_difference / 60)
+		seconds_difference = time_difference - math.floor(time_difference / 60) * 60
+		print('not time yet: ', minutes_difference, 'mins', seconds_difference, 'secs left')
 		time.sleep(5)
   
-  #### uncomment the pair of lines for the next action (clock in, start lunch, end lunch, clock out)
-  # clockInButton = browser.find_element_by_name(element_for_clockin)
+  #### uncomment the pair of lines for the next action (i.e. right now it's set to click on the start lunch button)
+	# clockInButton = browser.find_element_by_name(element_for_clockin)
 	# clockInButton.click()
-  # startLunchButton = browser.find_element_by_name(element_for_startlunch)
-	# startLunchButton.click()
+	startLunchButton = browser.find_element_by_name(element_for_startlunch)
+	startLunchButton.click()
   # endLunchButton = browser.find_element_by_name(element_for_endlunch)
 	# endLunchButton.click()
   # clockOutButton = browser.find_element_by_name(element_for_clockout)
