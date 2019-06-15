@@ -61,7 +61,7 @@ try:
 	print('logging in...')
 	time.sleep(3)
 
-	time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # unix epoch time to time you want to trigger the action: https://www.epochconverter.com/
+	time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
 	while int(time.time()) < time_set:
 		time_difference = time_set - int(time.time())
 		minutes_difference = math.floor(time_difference / 60)
