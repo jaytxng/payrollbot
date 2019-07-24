@@ -37,10 +37,9 @@ element_for_startlunch="StartLunch"
 #enter the element for EndLunch
 element_for_endlunch="EndLunch"
 
-###########################################################
+######################## FIRST ACTION #############################
 
-
-time_set = UPDATE_THIS_WITH_A_UNIX_EPOCH_TIME # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
+time_set = 1564000200 # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
 while int(time.time()) < time_set:
   time_difference = time_set - int(time.time())
   minutes_difference = math.floor(time_difference / 60)
@@ -48,7 +47,7 @@ while int(time.time()) < time_set:
   print('not time yet: ', minutes_difference, 'mins', seconds_difference, 'secs left')
   time.sleep(5)
 
-browser = webdriver.Safari()	#for macOS users[for others use chrome vis chromedriver]
+browser = webdriver.Chrome('/UPDATE-YOUR-PATH-TO-CHROMEDRIVER/chromedriver')	# download chromedriver here: https://sites.google.com/a/chromium.org/chromedriver/downloads
 browser.get((website_link))
 
 # wait 5 seconds to be safe in case the site is slow to load
@@ -66,7 +65,7 @@ try:
 	signInButton = browser.find_element_by_xpath(element_for_submit)
 	signInButton.click()
 	print('logging in...')
-	time.sleep(3)
+	time.sleep(6)
 
   
   #### uncomment the pair of lines for the next action
@@ -76,9 +75,9 @@ try:
 	# startLunchButton.click()
 	# endLunchButton = browser.find_element_by_name(element_for_endlunch)
 	# endLunchButton.click()
-  # clockOutButton = browser.find_element_by_name(element_for_clockout)
+	# clockOutButton = browser.find_element_by_name(element_for_clockout)
 	# clockOutButton.click()
-	print('action done baby! time to get outta here...')
+	print('action done! time to get outta here...')
 
 	#### to quit the browser uncomment the following lines ####
 	time.sleep(3)
@@ -95,4 +94,3 @@ except Exception:
 	browser.quit()
 	browserExe = "Safari"
 	os.system("pkill "+browserExe)
-
