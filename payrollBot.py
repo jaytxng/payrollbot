@@ -39,7 +39,7 @@ element_for_endlunch="EndLunch"
 
 ######################## FIRST ACTION #############################
 
-time_set = 1564000200 # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
+time_set = 1564072200 # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
 while int(time.time()) < time_set:
   time_difference = time_set - int(time.time())
   minutes_difference = math.floor(time_difference / 60)
@@ -47,7 +47,7 @@ while int(time.time()) < time_set:
   print('not time yet: ', minutes_difference, 'mins', seconds_difference, 'secs left')
   time.sleep(5)
 
-browser = webdriver.Chrome('/UPDATE-YOUR-PATH-TO-CHROMEDRIVER/chromedriver')	# download chromedriver here: https://sites.google.com/a/chromium.org/chromedriver/downloads
+browser = webdriver.Chrome(config.LOGIN_CONFIG['pathtodriver'])	# download chromedriver here: https://sites.google.com/a/chromium.org/chromedriver/downloads
 browser.get((website_link))
 
 # wait 5 seconds to be safe in case the site is slow to load
