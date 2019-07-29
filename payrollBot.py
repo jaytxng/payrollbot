@@ -27,7 +27,7 @@ element_for_username="Username"
 #enter the element for password input field
 element_for_password="Password"
 #enter the element for submit button
-element_for_submit="/html/body/div[1]/div[1]/div[2]/div/form/button"
+element_for_submit="/html/body/div[1]/div[1]/div[3]/div/form/button"
 #enter the element for clockin
 element_for_clockin="ClockIn"
 #enter the element for clockout
@@ -39,7 +39,7 @@ element_for_endlunch="EndLunch"
 
 ######################## FIRST ACTION #############################
 
-time_set = 1564072200 # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
+time_set = 1564448400 # find the unix epoch time to trigger the action: https://www.epochconverter.com/ (if you're using the converter, make sure to check that it's `local` time)
 while int(time.time()) < time_set:
   time_difference = time_set - int(time.time())
   minutes_difference = math.floor(time_difference / 60)
